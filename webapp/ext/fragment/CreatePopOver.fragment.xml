@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:tab="sap.ui.table" xmlns="sap.m">
+	<ActionSheet placement="Bottom">
+		<buttons>
+			<Button text="{i18n>Person}" id="CreatePerson" press="onCreateCommon" type="Transparent"></Button>
+			<Button text="{i18n>Organization}" id="CreateOrganization" press="onCreateCommon" type="Transparent"></Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

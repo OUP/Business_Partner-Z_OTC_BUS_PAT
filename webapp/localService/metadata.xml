@@ -1,0 +1,1693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://s4dbasdev130:443/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZOTCBUSINESSPARTNER_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_BusinessPartnerVHType" sap:label="Business Partner Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key"/>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="30" sap:label="Title" sap:quickinfo="Title text"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:quickinfo="Date of Birth of Business Partner"/>
+                <Property Name="BusinessPartnerCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Business Partner Category"/>
+                <Property Name="BusinessPartnerIDByExtSystem" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="External BP Number" sap:quickinfo="Business Partner Number in External System"/>
+                <Property Name="BusinessPartnerName" Type="Edm.String" MaxLength="81" sap:label="Business Partner Name"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <NavigationProperty Name="to_FormOfAddressText" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_77B97FEC11941A669886CB8195BBB298" FromRole="FromRole_assoc_77B97FEC11941A669886CB8195BBB298" ToRole="ToRole_assoc_77B97FEC11941A669886CB8195BBB298"/>
+            </EntityType>
+            <EntityType Name="I_CompanyCodeStdVHType" sap:label="Company Code" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Company Code"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Value Help for Customer" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Customer Name" sap:quickinfo="Name of Customer"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Complete Flag" sap:quickinfo="Business Purpose Completed Flag"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="I_FormOfAddressTextType" sap:label="Form Of Address Text" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="FormOfAddress"/>
+                </Key>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="FormOfAddress" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key"/>
+                <Property Name="FormOfAddressName" Type="Edm.String" MaxLength="30" sap:label="Title" sap:quickinfo="Title text"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPADDRTPType" sap:label="BP Address Consumption View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="AddressNumber"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AddressNumberForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Country_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EmailAddress_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HouseNumber_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Region_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StreetName_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="AddressNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Address Number"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="AddressNumberForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="AddressNumberForEdit_fc" sap:label="Address Number"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:field-control="StreetName_fc" sap:label="Street"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:field-control="HouseNumber_fc" sap:label="House Number"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="Country_fc" sap:label="Country" sap:quickinfo="Country Key"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="Region_fc" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241" sap:field-control="EmailAddress_fc" sap:label="E-Mail Address"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_96E9FED251CAB2E78D62326FC4296871" FromRole="FromRole_assoc_96E9FED251CAB2E78D62326FC4296871" ToRole="ToRole_assoc_96E9FED251CAB2E78D62326FC4296871"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_2303139CED1610B2150FFE2A7046F1FC" FromRole="FromRole_assoc_2303139CED1610B2150FFE2A7046F1FC" ToRole="ToRole_assoc_2303139CED1610B2150FFE2A7046F1FC"/>
+                <NavigationProperty Name="to_BusinessPartner" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_3D79A0F2EC4911515258815DFD7A8105" FromRole="ToRole_assoc_3D79A0F2EC4911515258815DFD7A8105" ToRole="FromRole_assoc_3D79A0F2EC4911515258815DFD7A8105"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPCUSTOMERROLEType" sap:label="Consumption view for Customer BP Roles" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BusinessPartnerRole"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartnerRoleForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:value-list="standard"/>
+                <Property Name="BusinessPartnerRole" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="BP Role"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:value-list="standard"/>
+                <Property Name="BusinessPartnerRoleForEdit" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:field-control="BusinessPartnerRoleForEdit_fc" sap:label="BP Role"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_2C743987CDA70218F4EEF75890DB18DF" FromRole="FromRole_assoc_2C743987CDA70218F4EEF75890DB18DF" ToRole="ToRole_assoc_2C743987CDA70218F4EEF75890DB18DF"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_368CEE18647D3327507E6A3254207104" FromRole="FromRole_assoc_368CEE18647D3327507E6A3254207104" ToRole="ToRole_assoc_368CEE18647D3327507E6A3254207104"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPCustomerTPType" sap:label="Business Partner Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AlternativePayerAccount_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AuthorizationGroup_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BillingIsBlockedForCustomer_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Customer_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerAccountGroup_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerClassification_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DataMediumExchangeIndicator_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryIsBlocked_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderIsBlockedForCustomer_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostingIsBlocked_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Supplier_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VATLiability_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="Customer_fc" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:label="BP GUID" sap:quickinfo="Business Partner GUID"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="CustomerAccountGroup_fc" sap:label="Account group" sap:quickinfo="Customer Account Group"/>
+                <Property Name="AlternativePayerAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="AlternativePayerAccount_fc" sap:label="Alternative payer" sap:quickinfo="Account number of an alternative payer"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:field-control="DataMediumExchangeIndicator_fc" sap:label="DME indicator" sap:quickinfo="Report key for data medium exchange"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="Supplier_fc" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="CustomerClassification" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="CustomerClassification_fc" sap:label="Customer classific." sap:quickinfo="Customer classification"/>
+                <Property Name="VATLiability" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="VATLiability_fc" sap:label="Liable for VAT"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="PostingIsBlocked_fc" sap:label="Posting Block" sap:quickinfo="Central posting block"/>
+                <Property Name="DeliveryIsBlocked" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="DeliveryIsBlocked_fc" sap:label="Delivery block" sap:quickinfo="Central delivery block for the customer"/>
+                <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="BillingIsBlockedForCustomer_fc" sap:label="Billing block" sap:quickinfo="Central billing block for customer"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="OrderIsBlockedForCustomer_fc" sap:label="Order block" sap:quickinfo="Central order block for customer"/>
+                <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="AuthorizationGroup_fc" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="zz1_last_chk_date_cus" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ABC Validity Date: Last Check"/>
+                <Property Name="zz1_next_chk_date_cus" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ABC Validity Date: Next Check"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_66D3D432A946083D72AFB811D2F379F7" FromRole="FromRole_assoc_66D3D432A946083D72AFB811D2F379F7" ToRole="ToRole_assoc_66D3D432A946083D72AFB811D2F379F7"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_39C58BD1DEFF722DA78942F519C9F0B3" FromRole="FromRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3" ToRole="ToRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPCustWhdgTaxTPType" sap:label="Customer Withholding tax TP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="WithholdingTaxType"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/>
+                <Property Name="WithholdingTaxType" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Withholding Tax Type" sap:quickinfo="Indicator for Withholding Tax Type"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code"/>
+                <Property Name="WithholdingTaxNumber" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="W/tax number" sap:quickinfo="Withholding tax identification number"/>
+                <Property Name="ObligationDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="W/Tax Obligated Frm" sap:quickinfo="Obligated to Withhold Tax From"/>
+                <Property Name="ObligationDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Oblig.to W/Tax Until" sap:quickinfo="Obligated to Withhold Tax Until"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_3BA7F26BEFC45852D754672A4CEE4540" FromRole="FromRole_assoc_3BA7F26BEFC45852D754672A4CEE4540" ToRole="ToRole_assoc_3BA7F26BEFC45852D754672A4CEE4540"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C" FromRole="FromRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C" ToRole="ToRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPSalesAreaTPType" sap:label="Business Partner Sales Area TP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerAccountAssignmentGroup_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerGroup_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerPaymentTerms_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerPricingProcedure_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DeliveryPriority_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IncotermsClassification_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IncotermsLocation1_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderIsBlockedForCustomer_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PriceListType_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SalesDistrict_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ShippingCondition_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SupplyingPlant_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Distribution Channel"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Division"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:field-control="Currency_fc" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="OrderIsBlockedForCustomer_fc" sap:label="Ord.blk:sls ar." sap:quickinfo="Customer order block (sales area)"/>
+                <Property Name="CustomerGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="CustomerGroup_fc" sap:label="Customer Group"/>
+                <Property Name="SalesDistrict" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:field-control="SalesDistrict_fc" sap:label="Sales District"/>
+                <Property Name="CustomerPricingProcedure" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="CustomerPricingProcedure_fc" sap:label="Cust.Pric.Procedure" sap:quickinfo="Customer Classification for Pricing Procedure Determination"/>
+                <Property Name="PriceListType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="PriceListType_fc" sap:label="Price List Type"/>
+                <Property Name="DeliveryPriority" Type="Edm.String" MaxLength="2" sap:field-control="DeliveryPriority_fc"/>
+                <Property Name="OrderCombinationIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Order Combination" sap:quickinfo="Order Combination Indicator"/>
+                <Property Name="SupplyingPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="SupplyingPlant_fc" sap:label="Delivering Plant" sap:quickinfo="Delivering Plant (Own or External)"/>
+                <Property Name="ShippingCondition" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="ShippingCondition_fc" sap:label="Shipping Conditions"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:field-control="IncotermsClassification_fc" sap:label="Incoterms" sap:quickinfo="Incoterms (Part 1)"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70" sap:field-control="IncotermsLocation1_fc" sap:label="Incoterms Location 1"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="CustomerPaymentTerms_fc" sap:label="Payment terms" sap:quickinfo="Terms of payment key"/>
+                <Property Name="CustomerAccountAssignmentGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:field-control="CustomerAccountAssignmentGroup_fc" sap:label="Acct Assmt Grp Cust." sap:quickinfo="Account Assignment Group for this customer"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="RetrunGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Return Group"/>
+                <Property Name="ReturnPolicies" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Return Policies"/>
+                <Property Name="ProductSubstitution" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Product Substitution"/>
+                <Property Name="BackorderNypIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Backorder NYP indicator"/>
+                <Property Name="BackorderOosIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Backorder OOS Indicator"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_EC7572E779979D37641A12E26278B3AE" FromRole="FromRole_assoc_EC7572E779979D37641A12E26278B3AE" ToRole="ToRole_assoc_EC7572E779979D37641A12E26278B3AE"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_856FE8A5DA47DD68944EC57EF5C84C27" FromRole="FromRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27" ToRole="ToRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BPUnloadingPointTPType" sap:label="Consumption View for BP Unloading Point" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="UnloadingPointName"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="UnloadingPointNameForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="UnloadingPointName" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Unloading Point"/>
+                <Property Name="CustomerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="UnloadingPointNameForEdit" Type="Edm.String" MaxLength="25" sap:field-control="UnloadingPointNameForEdit_fc" sap:label="Unloading Point"/>
+                <Property Name="CustomerFactoryCalenderCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Cust.fact.calendar" sap:quickinfo="Customer's factory calendar"/>
+                <Property Name="IsDfltBPUnloadingPoint" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Default unloading pt" sap:quickinfo="Default unloading point"/>
+                <Property Name="BPGoodsReceivingHoursCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Goods receiving hrs" sap:quickinfo="Goods receiving hours ID (default value)"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_27DF81D5FE31E9E73AF144121DD456D7" FromRole="FromRole_assoc_27DF81D5FE31E9E73AF144121DD456D7" ToRole="ToRole_assoc_27DF81D5FE31E9E73AF144121DD456D7"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_59708D00C4D69C1955045D0B1511EE75" FromRole="FromRole_assoc_59708D00C4D69C1955045D0B1511EE75" ToRole="ToRole_assoc_59708D00C4D69C1955045D0B1511EE75"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BP_CUSTOMERType" sap:label="BP Customer Create" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Activation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_5B9CA6E2DAC02B831F23A38A43EA25CB" FromRole="FromRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB" ToRole="ToRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F" FromRole="FromRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F" ToRole="ToRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F"/>
+                <NavigationProperty Name="to_BPCreditSegment" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_F9A47E16615244C7784F38F5CAD70302" FromRole="FromRole_assoc_F9A47E16615244C7784F38F5CAD70302" ToRole="ToRole_assoc_F9A47E16615244C7784F38F5CAD70302"/>
+                <NavigationProperty Name="to_BPCust" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_B556B6F9AB497F1EA2ADD266713E5E84" FromRole="FromRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84" ToRole="ToRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84"/>
+                <NavigationProperty Name="to_BPIdentificationNumbers" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_42483ED88CC3EF96AF3F7D8AF527C3B6" FromRole="FromRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6" ToRole="ToRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6"/>
+                <NavigationProperty Name="to_BPIndustry" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_7357591B05AE2062643C4EBE37E86D52" FromRole="FromRole_assoc_7357591B05AE2062643C4EBE37E86D52" ToRole="ToRole_assoc_7357591B05AE2062643C4EBE37E86D52"/>
+                <NavigationProperty Name="to_BPWhTax" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_2BAD761CD9432F4193B30ADDAB1EC332" FromRole="FromRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332" ToRole="ToRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332"/>
+                <NavigationProperty Name="to_BusinessPartnerAddress" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_3D79A0F2EC4911515258815DFD7A8105" FromRole="FromRole_assoc_3D79A0F2EC4911515258815DFD7A8105" ToRole="ToRole_assoc_3D79A0F2EC4911515258815DFD7A8105"/>
+                <NavigationProperty Name="to_BusinessPartnerCustomerCo" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_1F8D24C7C6B4FF2699D47676A4E7FC01" FromRole="FromRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01" ToRole="ToRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01"/>
+                <NavigationProperty Name="to_BusinessPartnerRole" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_0D97B963F5321A6FF6EFEC9DA50C2932" FromRole="FromRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932" ToRole="ToRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932"/>
+                <NavigationProperty Name="to_BusinessPartnerSalesArea" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_75575426A3B6B2A63F49D780C19EF5CE" FromRole="FromRole_assoc_75575426A3B6B2A63F49D780C19EF5CE" ToRole="ToRole_assoc_75575426A3B6B2A63F49D780C19EF5CE"/>
+                <NavigationProperty Name="to_BusinessPartnerUnloadingPoint" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_EAD02F43B1F95D2379B2D9AE7CA093A5" FromRole="FromRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5" ToRole="ToRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BuPaIdentificationTPType" sap:label="Business partner identification TP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BPIdentificationNumber"/>
+                    <PropertyRef Name="BPIdentificationType"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BPIdentificationNumberForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BPIdentificationTypeForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BPIdentificationNumber" Type="Edm.String" Nullable="false" MaxLength="60" sap:display-format="UpperCase" sap:label="ID number" sap:quickinfo="Identification Number"/>
+                <Property Name="BPIdentificationType" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="UpperCase" sap:label="Identification Type"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BPIdentificationNumberForEdit" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:field-control="BPIdentificationNumberForEdit_fc" sap:label="ID number" sap:quickinfo="Identification Number"/>
+                <Property Name="BPIdentificationTypeForEdit" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:field-control="BPIdentificationTypeForEdit_fc" sap:label="Identification Type"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_D531ADC732DD1C5368BB5E42EA11044D" FromRole="FromRole_assoc_D531ADC732DD1C5368BB5E42EA11044D" ToRole="ToRole_assoc_D531ADC732DD1C5368BB5E42EA11044D"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_00FF7FF99CF3F86DD017867E3A9C786A" FromRole="FromRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A" ToRole="ToRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BuPaIndustryTPType" sap:label="Consumption View for BP Industries" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="IndustrySector"/>
+                    <PropertyRef Name="IndustrySystemType"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IndustrySectorForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IndustrySystemTypeForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="IndustrySector" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry"/>
+                <Property Name="IndustrySystemType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Industry System"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="IndustrySectorForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="IndustrySectorForEdit_fc" sap:label="Industry"/>
+                <Property Name="IndustrySystemTypeForEdit" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="IndustrySystemTypeForEdit_fc" sap:label="Industry System"/>
+                <Property Name="IsStandardIndustry" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Standard Industry" sap:quickinfo="Industry is Standard for BP in Industry System"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_C3FF148D42AF194A50C8622ED30B8254" FromRole="FromRole_assoc_C3FF148D42AF194A50C8622ED30B8254" ToRole="ToRole_assoc_C3FF148D42AF194A50C8622ED30B8254"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_B410C9FC17AE0E26AC121F5F33A3252F" FromRole="FromRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F" ToRole="ToRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_BusinessPartnerCustCoTPType" sap:label="BP Cust CompanyCode Consumption" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AuthorizationGroup_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCodeForEdit_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CustomerHeadOffice_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PaymentTerms_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReconciliationAccount_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RecordPaymentHistoryIndicator_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="CompanyCodeForEdit" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="CompanyCodeForEdit_fc" sap:label="Company Code" sap:value-list="standard"/>
+                <Property Name="BusinessPartnerForEdit" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:label="BP GUID" sap:quickinfo="Business Partner GUID"/>
+                <Property Name="ReconciliationAccount" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="ReconciliationAccount_fc" sap:label="Reconciliation acct" sap:quickinfo="Reconciliation Account in General Ledger"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="PaymentTerms_fc" sap:label="Payment terms" sap:quickinfo="Terms of payment key"/>
+                <Property Name="CustomerHeadOffice" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:field-control="CustomerHeadOffice_fc" sap:label="Head office" sap:quickinfo="Head office account number (in branch accounts)"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:field-control="AuthorizationGroup_fc" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="RecordPaymentHistoryIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:field-control="RecordPaymentHistoryIndicator_fc" sap:label="Record pmnt history" sap:quickinfo="Indicator: Record Payment History ?"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_5A1798D018DA6A07BE606C6A616902D1" FromRole="FromRole_assoc_5A1798D018DA6A07BE606C6A616902D1" ToRole="ToRole_assoc_5A1798D018DA6A07BE606C6A616902D1"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_2207C2CB52D42DFC9FA8DD52AB121751" FromRole="FromRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751" ToRole="ToRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751"/>
+            </EntityType>
+            <EntityType Name="ZOTC_C_CreditSegementTPType" sap:label="Consumption View for Credit Segment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="credit_sgmnt"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number" sap:value-list="standard"/>
+                <Property Name="credit_sgmnt" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Segment"/>
+                <Property Name="limit_rule" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Rules" sap:quickinfo="Rule for Calculating Score and Credit Limit"/>
+                <Property Name="risk_class" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Risk Class"/>
+                <Property Name="check_rule" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Credit Check Rule" sap:quickinfo="Rule for Credit Check"/>
+                <Property Name="credit_group" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Credit Group" sap:quickinfo="Customer Credit Group"/>
+                <Property Name="credit_limit" Type="Edm.Decimal" Precision="16" Scale="3" sap:label="Credit Limit"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:heading="" sap:quickinfo="" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_888E1172D59DD8DF083D10E4FC8548D3" FromRole="FromRole_assoc_888E1172D59DD8DF083D10E4FC8548D3" ToRole="ToRole_assoc_888E1172D59DD8DF083D10E4FC8548D3"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZOTCBUSINESSPARTNER_SRV.assoc_BC56604F04BDD2695EA2B9D46A91AB2F" FromRole="FromRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F" ToRole="ToRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F"/>
+            </EntityType>
+            <ComplexType Name="ValidationFunctionResult">
+                <Property Name="IsValid" Type="Edm.Boolean" sap:label="Is valid"/>
+            </ComplexType>
+            <Association Name="assoc_96E9FED251CAB2E78D62326FC4296871" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" Multiplicity="1" Role="FromRole_assoc_96E9FED251CAB2E78D62326FC4296871"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_96E9FED251CAB2E78D62326FC4296871"/>
+            </Association>
+            <Association Name="assoc_2303139CED1610B2150FFE2A7046F1FC" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" Multiplicity="1" Role="FromRole_assoc_2303139CED1610B2150FFE2A7046F1FC"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" Multiplicity="0..1" Role="ToRole_assoc_2303139CED1610B2150FFE2A7046F1FC"/>
+            </Association>
+            <Association Name="assoc_66D3D432A946083D72AFB811D2F379F7" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" Multiplicity="1" Role="FromRole_assoc_66D3D432A946083D72AFB811D2F379F7"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_66D3D432A946083D72AFB811D2F379F7"/>
+            </Association>
+            <Association Name="assoc_39C58BD1DEFF722DA78942F519C9F0B3" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" Multiplicity="1" Role="FromRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" Multiplicity="0..1" Role="ToRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3"/>
+            </Association>
+            <Association Name="assoc_EC7572E779979D37641A12E26278B3AE" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" Multiplicity="1" Role="FromRole_assoc_EC7572E779979D37641A12E26278B3AE"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_EC7572E779979D37641A12E26278B3AE"/>
+            </Association>
+            <Association Name="assoc_856FE8A5DA47DD68944EC57EF5C84C27" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" Multiplicity="1" Role="FromRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" Multiplicity="0..1" Role="ToRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27"/>
+            </Association>
+            <Association Name="assoc_77B97FEC11941A669886CB8195BBB298" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_BusinessPartnerVHType" Multiplicity="1" Role="FromRole_assoc_77B97FEC11941A669886CB8195BBB298"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_FormOfAddressTextType" Multiplicity="1" Role="ToRole_assoc_77B97FEC11941A669886CB8195BBB298"/>
+            </Association>
+            <Association Name="assoc_D531ADC732DD1C5368BB5E42EA11044D" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" Multiplicity="1" Role="FromRole_assoc_D531ADC732DD1C5368BB5E42EA11044D"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_D531ADC732DD1C5368BB5E42EA11044D"/>
+            </Association>
+            <Association Name="assoc_00FF7FF99CF3F86DD017867E3A9C786A" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" Multiplicity="1" Role="FromRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" Multiplicity="0..1" Role="ToRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A"/>
+            </Association>
+            <Association Name="assoc_5B9CA6E2DAC02B831F23A38A43EA25CB" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB"/>
+            </Association>
+            <Association Name="assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="0..1" Role="ToRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F"/>
+            </Association>
+            <Association Name="assoc_F9A47E16615244C7784F38F5CAD70302" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_F9A47E16615244C7784F38F5CAD70302">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" Multiplicity="*" Role="ToRole_assoc_F9A47E16615244C7784F38F5CAD70302"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_F9A47E16615244C7784F38F5CAD70302">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_F9A47E16615244C7784F38F5CAD70302">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_B556B6F9AB497F1EA2ADD266713E5E84" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" Multiplicity="0..1" Role="ToRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_42483ED88CC3EF96AF3F7D8AF527C3B6" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" Multiplicity="*" Role="ToRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_7357591B05AE2062643C4EBE37E86D52" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_7357591B05AE2062643C4EBE37E86D52">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" Multiplicity="*" Role="ToRole_assoc_7357591B05AE2062643C4EBE37E86D52"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_7357591B05AE2062643C4EBE37E86D52">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_7357591B05AE2062643C4EBE37E86D52">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_2BAD761CD9432F4193B30ADDAB1EC332" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" Multiplicity="*" Role="ToRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_3D79A0F2EC4911515258815DFD7A8105" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_3D79A0F2EC4911515258815DFD7A8105">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" Multiplicity="*" Role="ToRole_assoc_3D79A0F2EC4911515258815DFD7A8105"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_3D79A0F2EC4911515258815DFD7A8105">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_3D79A0F2EC4911515258815DFD7A8105">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_1F8D24C7C6B4FF2699D47676A4E7FC01" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" Multiplicity="*" Role="ToRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_0D97B963F5321A6FF6EFEC9DA50C2932" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" Multiplicity="*" Role="ToRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_75575426A3B6B2A63F49D780C19EF5CE" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_75575426A3B6B2A63F49D780C19EF5CE">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" Multiplicity="*" Role="ToRole_assoc_75575426A3B6B2A63F49D780C19EF5CE"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_75575426A3B6B2A63F49D780C19EF5CE">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_75575426A3B6B2A63F49D780C19EF5CE">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_EAD02F43B1F95D2379B2D9AE7CA093A5" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" Multiplicity="1" Role="FromRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" Multiplicity="*" Role="ToRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5">
+                        <PropertyRef Name="BusinessPartner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_27DF81D5FE31E9E73AF144121DD456D7" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" Multiplicity="1" Role="FromRole_assoc_27DF81D5FE31E9E73AF144121DD456D7"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_27DF81D5FE31E9E73AF144121DD456D7"/>
+            </Association>
+            <Association Name="assoc_59708D00C4D69C1955045D0B1511EE75" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" Multiplicity="1" Role="FromRole_assoc_59708D00C4D69C1955045D0B1511EE75"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" Multiplicity="0..1" Role="ToRole_assoc_59708D00C4D69C1955045D0B1511EE75"/>
+            </Association>
+            <Association Name="assoc_C3FF148D42AF194A50C8622ED30B8254" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" Multiplicity="1" Role="FromRole_assoc_C3FF148D42AF194A50C8622ED30B8254"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_C3FF148D42AF194A50C8622ED30B8254"/>
+            </Association>
+            <Association Name="assoc_B410C9FC17AE0E26AC121F5F33A3252F" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" Multiplicity="1" Role="FromRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" Multiplicity="0..1" Role="ToRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F"/>
+            </Association>
+            <Association Name="assoc_2C743987CDA70218F4EEF75890DB18DF" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" Multiplicity="1" Role="FromRole_assoc_2C743987CDA70218F4EEF75890DB18DF"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_2C743987CDA70218F4EEF75890DB18DF"/>
+            </Association>
+            <Association Name="assoc_368CEE18647D3327507E6A3254207104" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" Multiplicity="1" Role="FromRole_assoc_368CEE18647D3327507E6A3254207104"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" Multiplicity="0..1" Role="ToRole_assoc_368CEE18647D3327507E6A3254207104"/>
+            </Association>
+            <Association Name="assoc_888E1172D59DD8DF083D10E4FC8548D3" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" Multiplicity="1" Role="FromRole_assoc_888E1172D59DD8DF083D10E4FC8548D3"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_888E1172D59DD8DF083D10E4FC8548D3"/>
+            </Association>
+            <Association Name="assoc_BC56604F04BDD2695EA2B9D46A91AB2F" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" Multiplicity="1" Role="FromRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" Multiplicity="0..1" Role="ToRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F"/>
+            </Association>
+            <Association Name="assoc_5A1798D018DA6A07BE606C6A616902D1" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" Multiplicity="1" Role="FromRole_assoc_5A1798D018DA6A07BE606C6A616902D1"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_5A1798D018DA6A07BE606C6A616902D1"/>
+            </Association>
+            <Association Name="assoc_2207C2CB52D42DFC9FA8DD52AB121751" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" Multiplicity="1" Role="FromRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" Multiplicity="0..1" Role="ToRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751"/>
+            </Association>
+            <Association Name="assoc_3BA7F26BEFC45852D754672A4CEE4540" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" Multiplicity="1" Role="FromRole_assoc_3BA7F26BEFC45852D754672A4CEE4540"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_3BA7F26BEFC45852D754672A4CEE4540"/>
+            </Association>
+            <Association Name="assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C" sap:content-version="1">
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" Multiplicity="1" Role="FromRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C"/>
+                <End Type="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" Multiplicity="0..1" Role="ToRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C"/>
+            </Association>
+            <EntityContainer Name="ZOTCBUSINESSPARTNER_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_BusinessPartnerVH" EntityType="ZOTCBUSINESSPARTNER_SRV.I_BusinessPartnerVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeStdVH" EntityType="ZOTCBUSINESSPARTNER_SRV.I_CompanyCodeStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="ZOTCBUSINESSPARTNER_SRV.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_FormOfAddressText" EntityType="ZOTCBUSINESSPARTNER_SRV.I_FormOfAddressTextType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPADDRTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPCUSTOMERROLE" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPCustomerTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPCustWhdgTaxTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPSalesAreaTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BPUnloadingPointTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BP_CUSTOMER" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BuPaIdentificationTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BuPaIndustryTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_BusinessPartnerCustCoTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZOTC_C_CreditSegementTP" EntityType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F" Association="ZOTCBUSINESSPARTNER_SRV.assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F"/>
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="ToRole_assoc_8B7749ACE1E17DF1BBF76BC61A52AE0F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_75575426A3B6B2A63F49D780C19EF5CE" Association="ZOTCBUSINESSPARTNER_SRV.assoc_75575426A3B6B2A63F49D780C19EF5CE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_75575426A3B6B2A63F49D780C19EF5CE"/>
+                    <End EntitySet="ZOTC_C_BPSalesAreaTP" Role="ToRole_assoc_75575426A3B6B2A63F49D780C19EF5CE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_77B97FEC11941A669886CB8195BBB298" Association="ZOTCBUSINESSPARTNER_SRV.assoc_77B97FEC11941A669886CB8195BBB298" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_BusinessPartnerVH" Role="FromRole_assoc_77B97FEC11941A669886CB8195BBB298"/>
+                    <End EntitySet="I_FormOfAddressText" Role="ToRole_assoc_77B97FEC11941A669886CB8195BBB298"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_27DF81D5FE31E9E73AF144121DD456D7" Association="ZOTCBUSINESSPARTNER_SRV.assoc_27DF81D5FE31E9E73AF144121DD456D7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPUnloadingPointTP" Role="FromRole_assoc_27DF81D5FE31E9E73AF144121DD456D7"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_27DF81D5FE31E9E73AF144121DD456D7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5B9CA6E2DAC02B831F23A38A43EA25CB" Association="ZOTCBUSINESSPARTNER_SRV.assoc_5B9CA6E2DAC02B831F23A38A43EA25CB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_5B9CA6E2DAC02B831F23A38A43EA25CB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_59708D00C4D69C1955045D0B1511EE75" Association="ZOTCBUSINESSPARTNER_SRV.assoc_59708D00C4D69C1955045D0B1511EE75" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPUnloadingPointTP" Role="FromRole_assoc_59708D00C4D69C1955045D0B1511EE75"/>
+                    <End EntitySet="ZOTC_C_BPUnloadingPointTP" Role="ToRole_assoc_59708D00C4D69C1955045D0B1511EE75"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BC56604F04BDD2695EA2B9D46A91AB2F" Association="ZOTCBUSINESSPARTNER_SRV.assoc_BC56604F04BDD2695EA2B9D46A91AB2F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_CreditSegementTP" Role="FromRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F"/>
+                    <End EntitySet="ZOTC_C_CreditSegementTP" Role="ToRole_assoc_BC56604F04BDD2695EA2B9D46A91AB2F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_39C58BD1DEFF722DA78942F519C9F0B3" Association="ZOTCBUSINESSPARTNER_SRV.assoc_39C58BD1DEFF722DA78942F519C9F0B3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCustomerTP" Role="FromRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3"/>
+                    <End EntitySet="ZOTC_C_BPCustomerTP" Role="ToRole_assoc_39C58BD1DEFF722DA78942F519C9F0B3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C3FF148D42AF194A50C8622ED30B8254" Association="ZOTCBUSINESSPARTNER_SRV.assoc_C3FF148D42AF194A50C8622ED30B8254" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BuPaIndustryTP" Role="FromRole_assoc_C3FF148D42AF194A50C8622ED30B8254"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_C3FF148D42AF194A50C8622ED30B8254"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C" Association="ZOTCBUSINESSPARTNER_SRV.assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCustWhdgTaxTP" Role="FromRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C"/>
+                    <End EntitySet="ZOTC_C_BPCustWhdgTaxTP" Role="ToRole_assoc_2960012B8CFEA573BEFFDFE0FDA0AE2C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2303139CED1610B2150FFE2A7046F1FC" Association="ZOTCBUSINESSPARTNER_SRV.assoc_2303139CED1610B2150FFE2A7046F1FC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPADDRTP" Role="FromRole_assoc_2303139CED1610B2150FFE2A7046F1FC"/>
+                    <End EntitySet="ZOTC_C_BPADDRTP" Role="ToRole_assoc_2303139CED1610B2150FFE2A7046F1FC"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1F8D24C7C6B4FF2699D47676A4E7FC01" Association="ZOTCBUSINESSPARTNER_SRV.assoc_1F8D24C7C6B4FF2699D47676A4E7FC01" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01"/>
+                    <End EntitySet="ZOTC_C_BusinessPartnerCustCoTP" Role="ToRole_assoc_1F8D24C7C6B4FF2699D47676A4E7FC01"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_888E1172D59DD8DF083D10E4FC8548D3" Association="ZOTCBUSINESSPARTNER_SRV.assoc_888E1172D59DD8DF083D10E4FC8548D3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_CreditSegementTP" Role="FromRole_assoc_888E1172D59DD8DF083D10E4FC8548D3"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_888E1172D59DD8DF083D10E4FC8548D3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5A1798D018DA6A07BE606C6A616902D1" Association="ZOTCBUSINESSPARTNER_SRV.assoc_5A1798D018DA6A07BE606C6A616902D1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BusinessPartnerCustCoTP" Role="FromRole_assoc_5A1798D018DA6A07BE606C6A616902D1"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_5A1798D018DA6A07BE606C6A616902D1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_66D3D432A946083D72AFB811D2F379F7" Association="ZOTCBUSINESSPARTNER_SRV.assoc_66D3D432A946083D72AFB811D2F379F7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCustomerTP" Role="FromRole_assoc_66D3D432A946083D72AFB811D2F379F7"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_66D3D432A946083D72AFB811D2F379F7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_368CEE18647D3327507E6A3254207104" Association="ZOTCBUSINESSPARTNER_SRV.assoc_368CEE18647D3327507E6A3254207104" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCUSTOMERROLE" Role="FromRole_assoc_368CEE18647D3327507E6A3254207104"/>
+                    <End EntitySet="ZOTC_C_BPCUSTOMERROLE" Role="ToRole_assoc_368CEE18647D3327507E6A3254207104"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3D79A0F2EC4911515258815DFD7A8105" Association="ZOTCBUSINESSPARTNER_SRV.assoc_3D79A0F2EC4911515258815DFD7A8105" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_3D79A0F2EC4911515258815DFD7A8105"/>
+                    <End EntitySet="ZOTC_C_BPADDRTP" Role="ToRole_assoc_3D79A0F2EC4911515258815DFD7A8105"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EC7572E779979D37641A12E26278B3AE" Association="ZOTCBUSINESSPARTNER_SRV.assoc_EC7572E779979D37641A12E26278B3AE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPSalesAreaTP" Role="FromRole_assoc_EC7572E779979D37641A12E26278B3AE"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_EC7572E779979D37641A12E26278B3AE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D531ADC732DD1C5368BB5E42EA11044D" Association="ZOTCBUSINESSPARTNER_SRV.assoc_D531ADC732DD1C5368BB5E42EA11044D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BuPaIdentificationTP" Role="FromRole_assoc_D531ADC732DD1C5368BB5E42EA11044D"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_D531ADC732DD1C5368BB5E42EA11044D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_856FE8A5DA47DD68944EC57EF5C84C27" Association="ZOTCBUSINESSPARTNER_SRV.assoc_856FE8A5DA47DD68944EC57EF5C84C27" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPSalesAreaTP" Role="FromRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27"/>
+                    <End EntitySet="ZOTC_C_BPSalesAreaTP" Role="ToRole_assoc_856FE8A5DA47DD68944EC57EF5C84C27"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EAD02F43B1F95D2379B2D9AE7CA093A5" Association="ZOTCBUSINESSPARTNER_SRV.assoc_EAD02F43B1F95D2379B2D9AE7CA093A5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5"/>
+                    <End EntitySet="ZOTC_C_BPUnloadingPointTP" Role="ToRole_assoc_EAD02F43B1F95D2379B2D9AE7CA093A5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_3BA7F26BEFC45852D754672A4CEE4540" Association="ZOTCBUSINESSPARTNER_SRV.assoc_3BA7F26BEFC45852D754672A4CEE4540" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCustWhdgTaxTP" Role="FromRole_assoc_3BA7F26BEFC45852D754672A4CEE4540"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_3BA7F26BEFC45852D754672A4CEE4540"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0D97B963F5321A6FF6EFEC9DA50C2932" Association="ZOTCBUSINESSPARTNER_SRV.assoc_0D97B963F5321A6FF6EFEC9DA50C2932" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932"/>
+                    <End EntitySet="ZOTC_C_BPCUSTOMERROLE" Role="ToRole_assoc_0D97B963F5321A6FF6EFEC9DA50C2932"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_96E9FED251CAB2E78D62326FC4296871" Association="ZOTCBUSINESSPARTNER_SRV.assoc_96E9FED251CAB2E78D62326FC4296871" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPADDRTP" Role="FromRole_assoc_96E9FED251CAB2E78D62326FC4296871"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_96E9FED251CAB2E78D62326FC4296871"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2207C2CB52D42DFC9FA8DD52AB121751" Association="ZOTCBUSINESSPARTNER_SRV.assoc_2207C2CB52D42DFC9FA8DD52AB121751" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BusinessPartnerCustCoTP" Role="FromRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751"/>
+                    <End EntitySet="ZOTC_C_BusinessPartnerCustCoTP" Role="ToRole_assoc_2207C2CB52D42DFC9FA8DD52AB121751"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B556B6F9AB497F1EA2ADD266713E5E84" Association="ZOTCBUSINESSPARTNER_SRV.assoc_B556B6F9AB497F1EA2ADD266713E5E84" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84"/>
+                    <End EntitySet="ZOTC_C_BPCustomerTP" Role="ToRole_assoc_B556B6F9AB497F1EA2ADD266713E5E84"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F9A47E16615244C7784F38F5CAD70302" Association="ZOTCBUSINESSPARTNER_SRV.assoc_F9A47E16615244C7784F38F5CAD70302" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_F9A47E16615244C7784F38F5CAD70302"/>
+                    <End EntitySet="ZOTC_C_CreditSegementTP" Role="ToRole_assoc_F9A47E16615244C7784F38F5CAD70302"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_42483ED88CC3EF96AF3F7D8AF527C3B6" Association="ZOTCBUSINESSPARTNER_SRV.assoc_42483ED88CC3EF96AF3F7D8AF527C3B6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6"/>
+                    <End EntitySet="ZOTC_C_BuPaIdentificationTP" Role="ToRole_assoc_42483ED88CC3EF96AF3F7D8AF527C3B6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_00FF7FF99CF3F86DD017867E3A9C786A" Association="ZOTCBUSINESSPARTNER_SRV.assoc_00FF7FF99CF3F86DD017867E3A9C786A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BuPaIdentificationTP" Role="FromRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A"/>
+                    <End EntitySet="ZOTC_C_BuPaIdentificationTP" Role="ToRole_assoc_00FF7FF99CF3F86DD017867E3A9C786A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7357591B05AE2062643C4EBE37E86D52" Association="ZOTCBUSINESSPARTNER_SRV.assoc_7357591B05AE2062643C4EBE37E86D52" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_7357591B05AE2062643C4EBE37E86D52"/>
+                    <End EntitySet="ZOTC_C_BuPaIndustryTP" Role="ToRole_assoc_7357591B05AE2062643C4EBE37E86D52"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B410C9FC17AE0E26AC121F5F33A3252F" Association="ZOTCBUSINESSPARTNER_SRV.assoc_B410C9FC17AE0E26AC121F5F33A3252F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BuPaIndustryTP" Role="FromRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F"/>
+                    <End EntitySet="ZOTC_C_BuPaIndustryTP" Role="ToRole_assoc_B410C9FC17AE0E26AC121F5F33A3252F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2BAD761CD9432F4193B30ADDAB1EC332" Association="ZOTCBUSINESSPARTNER_SRV.assoc_2BAD761CD9432F4193B30ADDAB1EC332" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BP_CUSTOMER" Role="FromRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332"/>
+                    <End EntitySet="ZOTC_C_BPCustWhdgTaxTP" Role="ToRole_assoc_2BAD761CD9432F4193B30ADDAB1EC332"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2C743987CDA70218F4EEF75890DB18DF" Association="ZOTCBUSINESSPARTNER_SRV.assoc_2C743987CDA70218F4EEF75890DB18DF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZOTC_C_BPCUSTOMERROLE" Role="FromRole_assoc_2C743987CDA70218F4EEF75890DB18DF"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_2C743987CDA70218F4EEF75890DB18DF"/>
+                </AssociationSet>
+                <FunctionImport Name="ZOTC_C_BPADDRTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" EntitySet="ZOTC_C_BPADDRTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="AddressNumber" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPADDRTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="AddressNumber" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCUSTOMERROLEPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" EntitySet="ZOTC_C_BPCUSTOMERROLE" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="BusinessPartnerRole" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCUSTOMERROLEValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="BusinessPartnerRole" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCustomerTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" EntitySet="ZOTC_C_BPCustomerTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCustomerTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCustWhdgTaxTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" EntitySet="ZOTC_C_BPCustWhdgTaxTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="Customer" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CompanyCode" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="WithholdingTaxType" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPCustWhdgTaxTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="Customer" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CompanyCode" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="WithholdingTaxType" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPSalesAreaTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" EntitySet="ZOTC_C_BPSalesAreaTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="SalesOrganization" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DistributionChannel" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="Division" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPSalesAreaTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="SalesOrganization" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DistributionChannel" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="Division" Type="Edm.String" Mode="In" MaxLength="2"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPUnloadingPointTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" EntitySet="ZOTC_C_BPUnloadingPointTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="Customer" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="UnloadingPointName" Type="Edm.String" Mode="In" MaxLength="25"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BPUnloadingPointTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="Customer" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="UnloadingPointName" Type="Edm.String" Mode="In" MaxLength="25"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BP_CUSTOMERActivation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" EntitySet="ZOTC_C_BP_CUSTOMER" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" sap:applicable-path="Activation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BP_CUSTOMEREdit" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" EntitySet="ZOTC_C_BP_CUSTOMER" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BP_CUSTOMERPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" EntitySet="ZOTC_C_BP_CUSTOMER" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BP_CUSTOMERValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BuPaIdentificationTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" EntitySet="ZOTC_C_BuPaIdentificationTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="BPIdentificationNumber" Type="Edm.String" Mode="In" MaxLength="60"/>
+                    <Parameter Name="BPIdentificationType" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BuPaIdentificationTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="BPIdentificationNumber" Type="Edm.String" Mode="In" MaxLength="60"/>
+                    <Parameter Name="BPIdentificationType" Type="Edm.String" Mode="In" MaxLength="6"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BuPaIndustryTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" EntitySet="ZOTC_C_BuPaIndustryTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="IndustrySector" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="IndustrySystemType" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BuPaIndustryTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="IndustrySector" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="IndustrySystemType" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="A3C2DD5D2E36154F7F292A4D167EBPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" EntitySet="ZOTC_C_BusinessPartnerCustCoTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CompanyCode" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_BusinessPartnerCustCoTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="CompanyCode" Type="Edm.String" Mode="In" MaxLength="4"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_CreditSegementTPPreparation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" EntitySet="ZOTC_C_CreditSegementTP" m:HttpMethod="POST" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="credit_sgmnt" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZOTC_C_CreditSegementTPValidation" ReturnType="ZOTCBUSINESSPARTNER_SRV.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType" sap:applicable-path="Validation_ac">
+                    <Parameter Name="BusinessPartner" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="credit_sgmnt" Type="Edm.String" Mode="In" MaxLength="10"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMERActivation"/>
+                        <PropertyValue Property="EditAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMEREdit"/>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMERPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMERValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_CreditSegementTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_CreditSegementTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_CreditSegementTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustomerTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustomerTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustomerTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AlternativePayerAccount_fc</PropertyPath>
+                                <PropertyPath>AuthorizationGroup_fc</PropertyPath>
+                                <PropertyPath>BillingIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>Customer_fc</PropertyPath>
+                                <PropertyPath>CustomerAccountGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerClassification_fc</PropertyPath>
+                                <PropertyPath>DataMediumExchangeIndicator_fc</PropertyPath>
+                                <PropertyPath>DeliveryIsBlocked_fc</PropertyPath>
+                                <PropertyPath>OrderIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>PostingIsBlocked_fc</PropertyPath>
+                                <PropertyPath>Supplier_fc</PropertyPath>
+                                <PropertyPath>VATLiability_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AlternativePayerAccount_fc</PropertyPath>
+                                <PropertyPath>AuthorizationGroup_fc</PropertyPath>
+                                <PropertyPath>BillingIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>Customer_fc</PropertyPath>
+                                <PropertyPath>CustomerAccountGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerClassification_fc</PropertyPath>
+                                <PropertyPath>DataMediumExchangeIndicator_fc</PropertyPath>
+                                <PropertyPath>DeliveryIsBlocked_fc</PropertyPath>
+                                <PropertyPath>OrderIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>PostingIsBlocked_fc</PropertyPath>
+                                <PropertyPath>Supplier_fc</PropertyPath>
+                                <PropertyPath>VATLiability_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIdentificationTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIdentificationTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIdentificationTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>BPIdentificationNumberForEdit_fc</PropertyPath>
+                                <PropertyPath>BPIdentificationTypeForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>BPIdentificationNumberForEdit_fc</PropertyPath>
+                                <PropertyPath>BPIdentificationTypeForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIndustryTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIndustryTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BuPaIndustryTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>IndustrySectorForEdit_fc</PropertyPath>
+                                <PropertyPath>IndustrySystemTypeForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>IndustrySectorForEdit_fc</PropertyPath>
+                                <PropertyPath>IndustrySystemTypeForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustWhdgTaxTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustWhdgTaxTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCustWhdgTaxTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPADDRTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPADDRTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPADDRTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AddressNumberForEdit_fc</PropertyPath>
+                                <PropertyPath>Country_fc</PropertyPath>
+                                <PropertyPath>EmailAddress_fc</PropertyPath>
+                                <PropertyPath>HouseNumber_fc</PropertyPath>
+                                <PropertyPath>Region_fc</PropertyPath>
+                                <PropertyPath>StreetName_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AddressNumberForEdit_fc</PropertyPath>
+                                <PropertyPath>Country_fc</PropertyPath>
+                                <PropertyPath>EmailAddress_fc</PropertyPath>
+                                <PropertyPath>HouseNumber_fc</PropertyPath>
+                                <PropertyPath>Region_fc</PropertyPath>
+                                <PropertyPath>StreetName_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BusinessPartnerCustCoTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/A3C2DD5D2E36154F7F292A4D167EBPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BusinessPartnerCustCoTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AuthorizationGroup_fc</PropertyPath>
+                                <PropertyPath>CompanyCodeForEdit_fc</PropertyPath>
+                                <PropertyPath>CustomerHeadOffice_fc</PropertyPath>
+                                <PropertyPath>PaymentTerms_fc</PropertyPath>
+                                <PropertyPath>ReconciliationAccount_fc</PropertyPath>
+                                <PropertyPath>RecordPaymentHistoryIndicator_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>AuthorizationGroup_fc</PropertyPath>
+                                <PropertyPath>CompanyCodeForEdit_fc</PropertyPath>
+                                <PropertyPath>CustomerHeadOffice_fc</PropertyPath>
+                                <PropertyPath>PaymentTerms_fc</PropertyPath>
+                                <PropertyPath>ReconciliationAccount_fc</PropertyPath>
+                                <PropertyPath>RecordPaymentHistoryIndicator_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCUSTOMERROLE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCUSTOMERROLEPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPCUSTOMERROLEValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>BusinessPartnerRoleForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>BusinessPartnerRoleForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPSalesAreaTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPSalesAreaTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPSalesAreaTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>Currency_fc</PropertyPath>
+                                <PropertyPath>CustomerAccountAssignmentGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerPaymentTerms_fc</PropertyPath>
+                                <PropertyPath>CustomerPricingProcedure_fc</PropertyPath>
+                                <PropertyPath>DeliveryPriority_fc</PropertyPath>
+                                <PropertyPath>IncotermsClassification_fc</PropertyPath>
+                                <PropertyPath>IncotermsLocation1_fc</PropertyPath>
+                                <PropertyPath>OrderIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>PriceListType_fc</PropertyPath>
+                                <PropertyPath>SalesDistrict_fc</PropertyPath>
+                                <PropertyPath>ShippingCondition_fc</PropertyPath>
+                                <PropertyPath>SupplyingPlant_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>Currency_fc</PropertyPath>
+                                <PropertyPath>CustomerAccountAssignmentGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerGroup_fc</PropertyPath>
+                                <PropertyPath>CustomerPaymentTerms_fc</PropertyPath>
+                                <PropertyPath>CustomerPricingProcedure_fc</PropertyPath>
+                                <PropertyPath>DeliveryPriority_fc</PropertyPath>
+                                <PropertyPath>IncotermsClassification_fc</PropertyPath>
+                                <PropertyPath>IncotermsLocation1_fc</PropertyPath>
+                                <PropertyPath>OrderIsBlockedForCustomer_fc</PropertyPath>
+                                <PropertyPath>PriceListType_fc</PropertyPath>
+                                <PropertyPath>SalesDistrict_fc</PropertyPath>
+                                <PropertyPath>ShippingCondition_fc</PropertyPath>
+                                <PropertyPath>SupplyingPlant_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPUnloadingPointTP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPUnloadingPointTPPreparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BPUnloadingPointTPValidation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities/ZOTC_C_BP_CUSTOMER</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>UnloadingPointNameForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>UnloadingPointNameForEdit_fc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/BusinessPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Business Partner Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="I_BusinessPartnerVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BusinessPartner"/>
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddressName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FirstName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BirthDate"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerIDByExtSystem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsBusinessPurposeCompleted"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/BusinessPartnerForEdit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Business Partner Value Help"/>
+                        <PropertyValue Property="CollectionPath" String="I_BusinessPartnerVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BusinessPartnerForEdit"/>
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddress"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FormOfAddressName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FirstName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BirthDate"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerIDByExtSystem"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsBusinessPurposeCompleted"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CompanyCodeForEdit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Company Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeStdVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCodeForEdit"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/BusinessPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BusinessPartner"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerAccountGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsBusinessPurposeCompleted"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTCBUSINESSPARTNER_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>AddressNumber</PropertyPath>
+                        <PropertyPath>BusinessPartner</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>BusinessPartnerRoleForEdit</PropertyPath>
+                        <PropertyPath>BusinessPartner</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>CompanyCodeForEdit</PropertyPath>
+                        <PropertyPath>BusinessPartner</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://s4dbasdev130:443/sap/opu/odata/sap/ZOTCBUSINESSPARTNER_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://s4dbasdev130:443/sap/opu/odata/sap/ZOTCBUSINESSPARTNER_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

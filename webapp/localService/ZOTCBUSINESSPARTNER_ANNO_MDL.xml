@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zotcbusinesspartner_srv/$metadata">
+        <edmx:Include Namespace="ZOTCBUSINESSPARTNER_SRV" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zotcbusinesspartner_anno_mdl.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_BusinessPartnerVHType/FormOfAddress">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_BusinessPartnerVHType/AuthorizationGroup">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_BusinessPartnerVHType/IsBusinessPurposeCompleted">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_Customer_VHType/CustomerAccountGroup">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_Customer_VHType/AuthorizationGroup">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_Customer_VHType/IsBusinessPurposeCompleted">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftUUID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftEntityType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftAccessType">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.I_DraftAdministrativeDataType/InProcessByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/BusinessPartner">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/AddressNumber">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/BusinessPartnerForEdit">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/AddressNumberForEdit">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/HouseNumber">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/Region">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/EmailAddress">
+                <Annotation Term="UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/AddressNumberForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/Country_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/EmailAddress_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/HouseNumber_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/Region_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType/StreetName_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPADDRTPType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Country"/>
+                            <PropertyValue Property="Value" Path="Country"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Country</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCUSTOMERROLEType/BusinessPartnerRoleForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/AlternativePayerAccount_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/AuthorizationGroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/BillingIsBlockedForCustomer_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/Customer_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/CustomerAccountGroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/CustomerClassification_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/DataMediumExchangeIndicator_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/DeliveryIsBlocked_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/OrderIsBlockedForCustomer_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/PostingIsBlocked_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/Supplier_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustomerTPType/VATLiability_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPCustWhdgTaxTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/Currency_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/CustomerAccountAssignmentGroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/CustomerGroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/CustomerPaymentTerms_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/CustomerPricingProcedure_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/DeliveryPriority_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/IncotermsClassification_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/IncotermsLocation1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/OrderIsBlockedForCustomer_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/PriceListType_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/SalesDistrict_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/ShippingCondition_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPSalesAreaTPType/SupplyingPlant_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BPUnloadingPointTPType/UnloadingPointNameForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/Activation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/Edit_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BP_CUSTOMERType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/BPIdentificationNumberForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIdentificationTPType/BPIdentificationTypeForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/IndustrySectorForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BuPaIndustryTPType/IndustrySystemTypeForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CompanyCode">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CompanyCodeForEdit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/AuthorizationGroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CompanyCodeForEdit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/CustomerHeadOffice_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/PaymentTerms_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/ReconciliationAccount_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_BusinessPartnerCustCoTPType/RecordPaymentHistoryIndicator_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/DraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/ParentDraftUUID">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/Preparation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="ZOTCBUSINESSPARTNER_SRV.ZOTC_C_CreditSegementTPType/Validation_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

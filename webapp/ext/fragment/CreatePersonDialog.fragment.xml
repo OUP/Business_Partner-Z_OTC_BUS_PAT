@@ -1,0 +1,85 @@
+<!--
+
+    Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:tab="sap.ui.table" xmlns="sap.m" xmlns:sform="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield">
+	<Panel backgroundDesign="Transparent">
+		<sform:SmartForm id="PersonCreateDialog" flexEnabled="false" editable="true" editTogglable="false" class="sapSmartTemplatesSmartForm">
+			<sform:layout>
+				<sform:Layout columnsM="3" columnsL="3" columnsXL="3" labelSpanS="12" labelSpanM="12" labelSpanL="12" labelSpanXL="12"
+					singleGroupFullSize="false"/>
+			</sform:layout>
+			<!--sform:customData>
+				<core:CustomData key="defaultInputFieldDisplayBehaviour" value="descriptionAndId"/>
+			</sform:customData-->
+			<sform:Group label="{i18n>@GeneralData}">
+				<sform:GroupElement>
+					<smartField:SmartField id="header::BusinessPartnerForEdit" value="{BusinessPartnerForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::BusinessPartnerGrouping" value="{BusinessPartnerGrouping}" editable="true" change="changegrouping"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::BusinessPartnerCategory" value="{BusinessPartnerCategory}" editable="false"/>
+				</sform:GroupElement>
+				<sform:GroupElement >
+					<smartField:SmartField id="header::role" value="{BusinessPartnerRoleForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::FormOfAddressPerson" value="{FormOfAddressPerson}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::FirstName" value="{FirstName}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::LastName" value="{LastName}" editable="true"/>
+				</sform:GroupElement>
+			</sform:Group>
+			<sform:Group label="{i18n>@StandardAddressLabel}">
+				<sform:GroupElement>
+					<smartField:SmartField id="header::StreetName" value="{to_BusinessPartnerAddrFilter/StreetName}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::HouseNumber" value="{to_BusinessPartnerAddrFilter/HouseNumber}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::PostalCode" value="{to_BusinessPartnerAddrFilter/PostalCode}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::CityName" value="{to_BusinessPartnerAddrFilter/CityName}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::Country" value="{to_BusinessPartnerAddrFilter/Country}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::Region" value="{to_BusinessPartnerAddrFilter/Region}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField value="{to_BusinessPartnerAddrFilter/CorrespondenceLanguage}" editable="true"/>
+				</sform:GroupElement>
+			</sform:Group>
+			<sform:Group id="Header::Orgdata" label="{i18n>@OrganizationalData}">
+				<sform:GroupElement>
+					<smartField:SmartField id="header::SalesOrg" value="{SalesOrganizationForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::distChannel" value="{DistributionChannelForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::division" value="{DivisionForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::currency" value="{Currency}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::companyCode" value="{CompanyCodeForEdit}" editable="true"/>
+				</sform:GroupElement>
+				<sform:GroupElement>
+					<smartField:SmartField id="header::reconAccount" value="{ReconciliationAccount}" editable="true"/>
+				</sform:GroupElement>
+			</sform:Group>
+		</sform:SmartForm>
+	</Panel>
+</core:FragmentDefinition>
