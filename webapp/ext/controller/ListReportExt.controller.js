@@ -1,12 +1,33 @@
 sap.ui.define([], function () {
   "use strict";
+
+  const _sDeferredGroupId = new Date().getTime();
+  let _oCreateContext;
+  let _oDataModel;
+
   return {
     onInit: function () {
+      // test
       this._oComponent = this.getOwnerComponent();
       this._oResourceBundle = this._oComponent
         .getModel("i18n")
         .getResourceBundle();
       this._olView = this.getView();
+
+      // set deffered batch group
+      _oDataModel = this._oComponent.getModel();
+
+      // default group id
+      _oDataModel.setDeferredGroups(
+        _oDataModel.getDeferredGroups().concat([_sDeferredGroupId])
+      );
+    },
+
+    onAfterRendering: function () {
+      var createIconId = this._olView.getId() + "--addEntry";
+      if (sap.ui.getCore().byId(createIconId) !== undefined) {
+        sap.ui.getCore().byId(createIconId).setVisible(false);
+      }
     },
 
     onCreate: function (oEvent) {
@@ -48,7 +69,7 @@ sap.ui.define([], function () {
       }
 
       var oPromise = oApi.invokeActions(
-        "/C_BusinessPartnerCustomerCreate",
+        "/ZOTC_C_BP_CUSTOMERCreate",
         [],
         urlParameters
       );
@@ -57,7 +78,6 @@ sap.ui.define([], function () {
         if (aResponse[0] && aResponse[0].response) {
           var oResponseContext = aResponse[0].response.context;
           if (oResponseContext) {
-            // debugger;
             this._createDialog("", oResponseContext, sBusinessPartnerCategory);
           }
         }
@@ -104,7 +124,24 @@ sap.ui.define([], function () {
                 sap.m.MessageToast.show(
                   this._oResourceBundle.getText("@navigationMsg")
                 );
-                oNavController.navigateInternal(oContext);
+
+                _oDataModel.callFunction(
+                  "/ZOTC_C_BP_CUSTOMERPopulate_field_value",
+                  {
+                    method: "POST",
+                    urlParameters: {
+                      Key: oContext.getObject().DraftUUID,
+                    },
+                    success: () => {
+                      oNavController.navigateInternal(oContext);
+                    },
+                    error: (oError) => {
+                      MessageToast.show(`Error in navigation - ${oError}`);
+                    },
+                  }
+                );
+
+                // oNavController.navigateInternal(oContext);
               },
             },
             {
@@ -124,80 +161,33 @@ sap.ui.define([], function () {
       );
       this.createPersonDialog.setBindingContext(oContext);
 
-      var salesOrg = this.getView().byId("header::SalesOrg");
-      var distChannel = this.getView().byId("header::distChannel");
-      var division = this.getView().byId("header::division");
-      var currency = this.getView().byId("header::currency");
-      var companyCode = this.getView().byId("header::companyCode");
-      var reconAccount = this.getView().byId("header::reconAccount");
-      var role = this.getView().byId("header::role");
+      this._olView.addDependent(this.createPersonDialog);
+      this._olView.setBusy(false);
+      this.createPersonDialog.open();
 
-      this.createPersonDialog.bindElement({
-        path: oContext.getPath(),
-        parameters: {
-          expand:
-            "to_BusinessPartnerCustomer,to_BusinessPartnerAddrFilter,to_BusinessPartnerSalesArea,to_BusinessPartnerCustomerCo,to_BusinessPartnerRole",
-        },
-        events: {
-          dataReceived: (oDataEvent) => {
-            var salesdraftuuid = "00000000-0000-0000-0000-000000000000";
-            if (oDataEvent.getParameters().data) {
-              salesdraftuuid = oDataEvent.getParameters().data
-                .to_BusinessPartnerSalesArea[0].DraftUUID;
-            }
+      //   var salesOrg = this.getView().byId("header::SalesOrg");
 
-            var salesareapath =
-              "/C_BusinessPartnerSalesArea(BusinessPartner='',SalesOrganization='',DistributionChannel='',Division='',DraftUUID=guid'" +
-              salesdraftuuid +
-              "',IsActiveEntity=false)";
-            salesOrg.bindElement({
-              path: salesareapath,
-            });
-            distChannel.bindElement({
-              path: salesareapath,
-            });
-            division.bindElement({
-              path: salesareapath,
-            });
-            currency.bindElement({
-              path: salesareapath,
-            });
+      //   this.createPersonDialog.bindElement({
+      //     path: oContext.getPath(),
+      //     parameters: {
+      //       expand:
+      //         "to_BusinessPartnerCustomer,to_BusinessPartnerAddrFilter,to_BusinessPartnerSalesArea,to_BusinessPartnerCustomerCo,to_BusinessPartnerRole",
+      //     },
+      //     events: {
+      //       dataReceived: (oDataEvent) => {
+      //         var sSalesAreaPath =
+      //           "/ZOTC_C_BPSalesAreaTP(BusinessPartner='',SalesOrganization='',DistributionChannel='',Division='',IsActiveEntity=false)";
+      //         salesOrg.bindElement({
+      //           path: sSalesAreaPath,
+      //           parameters: { groupId: _sDeferredGroupId },
+      //         });
 
-            var compcodedraftuuid = "00000000-0000-0000-0000-000000000000";
-            if (oDataEvent.getParameters().data) {
-              compcodedraftuuid = oDataEvent.getParameters().data
-                .to_BusinessPartnerCustomerCo[0].DraftUUID;
-            }
-            var compcodepath =
-              "/C_BusinessPartnerCustCo(BusinessPartner='',CompanyCode='',DraftUUID=guid'" +
-              compcodedraftuuid +
-              "',IsActiveEntity=false)";
-            companyCode.bindElement({
-              path: compcodepath,
-            });
-            reconAccount.bindElement({
-              path: compcodepath,
-            });
-
-            var roledraftuuid = "00000000-0000-0000-0000-000000000000";
-            if (oDataEvent.getParameters().data) {
-              roledraftuuid = oDataEvent.getParameters().data
-                .to_BusinessPartnerRole[0].DraftUUID;
-            }
-            var rolepath =
-              "/C_BusinessPartnerCustomerRole(BusinessPartner='',BusinessPartnerRole='',DraftUUID=guid'" +
-              roledraftuuid +
-              "',IsActiveEntity=false)";
-            role.bindElement({
-              path: rolepath,
-            });
-
-            this._olView.addDependent(this.createPersonDialog);
-            this._olView.setBusy(false);
-            this.createPersonDialog.open();
-          },
-        },
-      });
+      //         this._olView.addDependent(this.createPersonDialog);
+      //         this._olView.setBusy(false);
+      //         this.createPersonDialog.open();
+      //       },
+      //     },
+      //   });
       return true;
     },
 
@@ -215,6 +205,32 @@ sap.ui.define([], function () {
           this
         );
       }
+    },
+
+    _isChangesPending: function (oContext, olController, fnCallBack) {
+      if (!this._olView.getModel().hasPendingChanges()) {
+        fnCallBack(oContext, olController);
+      } else {
+        jQuery.sap.delayedCall(1000, this, this._isChangesPending, [
+          oContext,
+          olController,
+          fnCallBack,
+        ]);
+      }
+    },
+
+    _discardDraft: function (oContext, that) {
+      var oModel = that._olView.getModel();
+      var mParametersDraftDiscard = {
+        success: function () {
+          that.createPersonDialog.setBusy(false);
+          that.createPersonDialog.close();
+          sap.m.MessageToast.show(
+            that._oResourceBundle.getText("ST_GENERIC_OBJECT_DELETED")
+          );
+        },
+      };
+      oModel.remove(oContext.getPath(), mParametersDraftDiscard);
     },
   };
 });
